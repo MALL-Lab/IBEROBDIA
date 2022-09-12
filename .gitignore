@@ -5,7 +5,7 @@ FastQC/
 .Rhistory
 .Rapp.history
 00_preprocess_data/data
-01_sequencing_data/data/IB_phy(FirstPhy).rds
+01_sequencing_data/data/first_phy.rds
 01_sequencing_data/data/TL_251
 01_sequencing_data/data/TL_265
 01_sequencing_data/data/TL_285
