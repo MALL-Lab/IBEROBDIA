@@ -1,6 +1,6 @@
 # Clinical Data
 ## Clinical Data Extraction
-path = "projects/IBEROBDIA/ARCHIVOS_FASTQ/"
+path = "projects/IBEROBDIA/Extdata/FASTQ/"
 names = list.files(path = path, pattern = ".fastq.gz")
 library(stringr)
 library(data.table)
@@ -30,3 +30,4 @@ table(clinical$CI)
 table(clinical$Status)
 # DT2    GAA Health    TGA 
 # 5     12     59      3 
+saveRDS(object = clinical, file = "projects/IBEROBDIA/Data/Clinical_Data.rds")

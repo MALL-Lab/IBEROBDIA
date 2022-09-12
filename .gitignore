@@ -1,0 +1,15 @@
+extdata/
+FastQC/
+*.xlsx
+.DS_Store
+.Rhistory
+.Rapp.history
+00_preprocess_data/data
+01_sequencing_data/data/TL_251
+01_sequencing_data/data/TL_265
+01_sequencing_data/data/TL_285
+01_sequencing_data/data/TL_300
+01_sequencing_data/data/TL_350
+01_sequencing_data/data/TL_400
+01_sequencing_data/out
+02_preprocess_phy/data

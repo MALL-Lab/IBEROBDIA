@@ -22,6 +22,6 @@ for (i in seq_along(htmls)){
   open_htmls[i] = paste("open", open_htmls[i])
 }
 system(open_htmls[1])
-for (i in seq.int(1,10)) {
+for (i in seq.int(20,30)) {
   system(open_htmls[i])
 }
