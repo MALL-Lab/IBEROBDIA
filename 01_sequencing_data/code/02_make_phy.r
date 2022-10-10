@@ -1,9 +1,11 @@
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 # Load packages
 library(phyloseq)
+library(dplyr)
 # Load Clinical Data and prepare paths
-metadata = readRDS("projects/IBEROBDIA/Data/Clinical_Data.rds") 
-path ="projects/IBEROBDIA/Data"
-truncL <- sort(list.files(path,pattern = "TL"))
+metadata = readRDS("../../00_preprocess_data/data/clinical_data.rds") 
+path ="../data/"
+truncL <- sort(list.files(path, pattern = "TL"))
 nams <- paste(truncL, "phy", sep="_")
 phy_list = list()
 
@@ -43,5 +45,3 @@ names(phy_list) = nams
 for (i in seq_along(phy_list)) {
   saveRDS(object =phy_list[[i]],file = paste(path, truncL[i], paste0(names(phy_list[i]),".rds"),sep = "/" ))
 }
-
-

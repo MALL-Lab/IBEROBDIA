@@ -1,6 +1,7 @@
 # Clinical Data
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 ## Clinical Data Extraction
-path = "projects/IBEROBDIA/Extdata/FASTQ/"
+path = "../../extdata/FASTQ/"
 names = list.files(path = path, pattern = ".fastq.gz")
 library(stringr)
 library(data.table)
@@ -26,8 +27,7 @@ clinical <- data.frame(clinical[,-1], row.names = clinical[,1])
 table(clinical$CI)
 # NP OB 
 # 23 56 
-
 table(clinical$Status)
 # DT2    GAA Health    TGA 
 # 5     12     59      3 
-saveRDS(object = clinical, file = "projects/IBEROBDIA/Data/Clinical_Data.rds")
+saveRDS(object = clinical, file = "../data/clinical_data.rds")

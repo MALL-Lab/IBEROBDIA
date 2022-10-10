@@ -1,12 +1,12 @@
-#FASTQC
-# 16S Fastq Processing
-library(dada2)
-path = "projects/IBEROBDIA/ARCHIVOS_FASTQ"
+# FASTQC
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+## 16S Fastq quality check
+path = "../../extdata/FASTQ"
 fnFs <- sort(list.files(path, pattern=".fastq.gz", full.names = TRUE))
 
 ## Gonna check fasta quality with Fastqc 
 l = list()
-# make command line for each raw
+# make command line for each raw (need FASTQC installed and ad to envir)
 for (i in seq_along(fnFs)){
   l[[i]] = paste("Fastqc", fnFs[i])
 }
@@ -22,6 +22,6 @@ for (i in seq_along(htmls)){
   open_htmls[i] = paste("open", open_htmls[i])
 }
 system(open_htmls[1])
-for (i in seq.int(20,30)) {
+for (i in seq.int(1,2)) {
   system(open_htmls[i])
 }
