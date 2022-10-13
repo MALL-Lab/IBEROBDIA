@@ -37,21 +37,31 @@ dadaFs <- dada(filtFs, err = errF, multithread = TRUE,
                HOMOPOLYMER_GAP_PENALTY = dada2.homopolymer_gap_penalty, BAND_SIZE = dada2.band_size)
 dadaFs[[1]]
 seqtab <- makeSequenceTable(dadaFs)
+print("Dimensions of sequence table before quimeras removal:")
 dim(seqtab)
+d1 = dim(seqtab)
 # Inspect distribution of sequence lengths
+print("Distribution of sequence lengths before quimeras removal:")
 table(nchar(getSequences(seqtab)))
 
 #Removing Quimeras from sequences
 seqtab.nochim <- removeBimeraDenovo(seqtab, method = dada2.method, multithread = TRUE, verbose = TRUE)
+print("Dimensions of sequence table after quimeras removal:")
 dim(seqtab.nochim)
-sum(seqtab.nochim)/sum(seqtab)
+d2 = dim(seqtab.nochim)
+print("Distribution of sequence lengths after quimeras removal:")
 table(nchar(getSequences(seqtab.nochim)))
+k = sum(seqtab.nochim)/sum(seqtab)
+print(paste((1 -round(x = k, digits = 3))*100, "% of the sequences were quimeras"))
+d3 = d2/d1
+print(paste(round(d3,digits = 3)*100,"% are maintained from the original unique sequences"))
 
 #Showing evolution of sequences from raw to final step
 getN <- function(x) sum(getUniques(x))
 track <- cbind(out, sapply(dadaFs, getN), rowSums(seqtab.nochim))
 colnames(track) <- c("input", "filtered", "denoisedF", "nonchim")
 rownames(track) <- sample.names
+print("Summary of the first 5 samples along the Pipeline:")
 head(track)
 
 # Taxonomical assignment
