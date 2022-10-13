@@ -39,7 +39,7 @@ dadaFs[[1]]
 seqtab <- makeSequenceTable(dadaFs)
 print("Dimensions of sequence table before quimeras removal:")
 dim(seqtab)
-
+d1 = dim(seqtab)
 # Inspect distribution of sequence lengths
 print("Distribution of sequence lengths before quimeras removal:")
 table(nchar(getSequences(seqtab)))
@@ -48,11 +48,13 @@ table(nchar(getSequences(seqtab)))
 seqtab.nochim <- removeBimeraDenovo(seqtab, method = dada2.method, multithread = TRUE, verbose = TRUE)
 print("Dimensions of sequence table after quimeras removal:")
 dim(seqtab.nochim)
+d2 = dim(seqtab.nochim)
 print("Distribution of sequence lengths after quimeras removal:")
 table(nchar(getSequences(seqtab.nochim)))
 k = sum(seqtab.nochim)/sum(seqtab)
 print(paste((1 -round(x = k, digits = 3))*100, "% of the sequences were quimeras"))
-
+d3 = d2[2]/d1[2]
+print(paste(round(d3,digits = 3)*100,"% are maintained from the original unique sequences" ))
 
 #Showing evolution of sequences from raw to final step
 getN <- function(x) sum(getUniques(x))
