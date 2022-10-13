@@ -5,7 +5,7 @@ experiment.name = "TL_400"
 input.dir.path =  "extdata/FASTQ"
 out.dir.path  = "01_sequencing_data/data"
 
-out.path = paste(out.dir.path, experiment.name, '/', sep = '')
+out.path = paste(out.dir.path,"/", experiment.name, '/', sep = '')
 
 if (dir.exists(out.path) == FALSE) {
   dir.create(out.path)
