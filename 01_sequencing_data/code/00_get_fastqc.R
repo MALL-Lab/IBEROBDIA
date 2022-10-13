@@ -18,7 +18,8 @@ for (i in seq_along(fnFs)){
 # Prepare open htmls informs from Fastqc
 htmls <- sort(list.files(path, pattern=".html", full.names = TRUE))
 open_htmls = htmls
-for (i in seq_along(htmls)){
+#seq_along(htmls)
+for (i in seq_along(1:5)){
   open_htmls[i] = paste("open", open_htmls[i])
 }
 system(open_htmls[1])

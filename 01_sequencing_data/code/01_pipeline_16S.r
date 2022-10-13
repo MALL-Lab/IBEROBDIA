@@ -1,5 +1,7 @@
 # DADA2 16S pipeline
-source(file = "")
+setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
+source(file = "01_sequencing_data/code/config_file.r")
+
 ## 16S Fastq Processing
 library(dada2)
 fnFs <- sort(list.files(input.dir.path, pattern=".fastq.gz", full.names = TRUE))
