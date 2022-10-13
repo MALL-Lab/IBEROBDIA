@@ -52,9 +52,9 @@ d2 = dim(seqtab.nochim)
 print("Distribution of sequence lengths after quimeras removal:")
 table(nchar(getSequences(seqtab.nochim)))
 k = sum(seqtab.nochim)/sum(seqtab)
-print(paste((1 -round(x = k, digits = 3))*100, "% of the sequences were quimeras"))
 d3 = d2[2]/d1[2]
-print(paste(round(d3,digits = 3)*100,"% are maintained from the original unique sequences" ))
+print(paste((1 -round(d3,digits = 3))*100,"% of the sequences were quimeras" ))
+print(paste("The abundance of these quimeras only represent", round(x = k, digits = 3)*100, "% of the total abundance"))
 
 #Showing evolution of sequences from raw to final step
 getN <- function(x) sum(getUniques(x))
