@@ -8,7 +8,7 @@ path ="../data/"
 truncL <- sort(list.files(path, pattern = "TL"))
 nams <- paste(truncL, "phy", sep="_")
 phy_list = list()
-
+i=1
 # Phylo.object construction
 for (i in seq_along(truncL)) {
   # Load and merge all data in phy.object

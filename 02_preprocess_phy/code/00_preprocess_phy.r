@@ -3,9 +3,11 @@ library(phyloseq)
 library(dplyr)
 library(stringr)
 library(ggplot2)
-
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+TL = "TL_251"
+path.phy = paste0("../../01_sequencing_data/data/",TL,"/",TL,"_phy.rds")
 # Load phy.object
-phy = readRDS("projects/IBEROBDIA/Data/TL_251/TL_251_phy.rds")
+phy = readRDS(path.phy)
 
 # Summary
 ntaxa(phy)
@@ -17,17 +19,17 @@ otu_table(phy)[1:5, 1:5]
 tax_table(phy)[1:5, 1:4]
 
 p = data.frame(sample_data(phy))
-# R adding a column to dataframe based on values in other columns:
+# R adding a column to dataframe based on values in other columns(Health vs Affected(DT2,TGA,GAA):
 p<- p %>% 
   mutate(New_Status = if_else(Status == "Health", "Health", "Affected"))
 sample_data(phy) <- p
 
 # Preprocess Phyloseq
 
-#1. Aglomerar en genero (Hay muy pocas especies, si aglomeramos por estas se va la mayoria al carajo)
-g_phy = tax_glom(physeq = phy,taxrank=rank_names(phy)[7])
+#1. Agglomerate in genus (There are very few species, if we agglomerate by these we lose most of them)
+g_phy = tax_glom(physeq = phy,taxrank=rank_names(phy)[6])
 
-#2. Filtrar aquellas ASVs que no cumplan unos criterios
+#2. Filter out ASVs that do not meet certain criteria.
 ## Make and apply the filter
 filter <- phyloseq::genefilter_sample(g_phy, filterfun_sample(function(x) x > 0), 
                                       A = 0.05*nsamples(g_phy))
@@ -51,16 +53,16 @@ ggplot(sample_sum_df, aes(x = sum)) +
 df <- psmelt(g_phy)
 
 #4. ML con NP vs OB, Health vs All??
-plot_richness(phy, color = "Status", x = "CI", measures = c("Observed", "Chao1", "Shannon")) + geom_boxplot(aes(fill = Status), alpha=.7)
+plot_richness(g_phy, color = "New_Status", x = "CI", measures = c("Observed", "Chao1", "Shannon")) + geom_boxplot(aes(fill = New_Status), alpha=.7)
 
 ord.nmds.bray <- ordinate(phy, method="NMDS", distance="bray")
-plot_ordination(phy, ord.nmds.bray, color="CI", title="Bray NMDS")
+plot_ordination(g_phy, ord.nmds.bray, color="CI", title="Bray NMDS")
 
 
 # Necesitamos obtener las taxa más abundantes, en este caso el top 15
 library(fantaxtic)
 library(microViz)
-k = ps_arrange(g_phy, Status)
+k = ps_arrange(g_phy, New_Status)
 top15 <- get_top_taxa(physeq_obj = k, n = 20, relative = T,
                       discard_other = F, other_label = "Other")
 # Ya que no todas las taxa fueron clasificadas a nivel de especie, generamos etiquetas compuestas de distintos rangos taxonómicos para el gráfico
@@ -68,6 +70,5 @@ top15 <- name_taxa(top15, label = "", species = T, other_label = "Other")
 # Finalmente graficamos
 fantaxtic_bar(top15, color_by = "Species", label_by = "Species", facet_by =NULL, grid_by = NULL,order_alg = "as.is", other_color = "Grey") -> ptop15
 ptop15
-
-
-
+table(g_phy@sam_data$New_Status)
+saveRDS(object = g_phy, file = "00_preprocess_phy.r")

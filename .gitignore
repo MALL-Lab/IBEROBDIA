@@ -1,9 +1,13 @@
-extdata/
-FastQC/
 *.xlsx
+*.pdf
+*.png
+*.Rmd
+*.html
 .DS_Store
 .Rhistory
 .Rapp.history
+extdata/
+FastQC/
 00_preprocess_data/data
 01_sequencing_data/data/first_phy.rds
 01_sequencing_data/data/TL_251
