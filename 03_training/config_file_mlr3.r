@@ -1,6 +1,5 @@
 # Config file
 # ====
-
 setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/')
 # Data path
 ExperimentName = 'first-experiment'
