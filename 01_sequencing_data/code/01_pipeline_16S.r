@@ -1,12 +1,13 @@
 # DADA2 16S pipeline
-setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
+#setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
+setwd("/Users/diego/git/IBEROBDIA")
 source(file = "01_sequencing_data/code/config_file.r")
 
 ## 16S Fastq Processing
 library(dada2)
 fnFs <- sort(list.files(input.dir.path, pattern=".fastq.gz", full.names = TRUE))
 sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
-#plotQualityProfile(fnFs[1])
+plotQualityProfile(fnFs[79])
 
 ## Place filtered files in filtered subdirectory
 filter.path = paste(input.dir.path, "Filtered_FASTQ", sep= "/")

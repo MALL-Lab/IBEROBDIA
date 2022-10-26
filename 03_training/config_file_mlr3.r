@@ -2,14 +2,13 @@
 # ====
 
 setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/')
-nbkujhnk
 # Data path
 ExperimentName = 'first-experiment'
 input.dir.path = '03_training/toRun/first-experiment/'
 out.dir.path = '03_training/results/'
 out.path = paste(out.dir.path, ExperimentName, '/', sep = '')
-exec.dir.path = '03_training/Exec/'
-outslurm.dir.path = '03_training/outs/'
+exec.dir.path = '03_training/exec/'
+out_slurm.dir.path = '03_training/outs/'
 
 if (dir.exists(out.path) == FALSE) {
   dir.create(out.path)

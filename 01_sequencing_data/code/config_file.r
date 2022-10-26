@@ -1,7 +1,7 @@
 # DADA2 config file
-setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
-
-experiment.name = "TL_400"
+#setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
+setwd("/Users/diego/git/IBEROBDIA")
+experiment.name = "TL_251"
 input.dir.path =  "extdata/FASTQ"
 out.dir.path  = "01_sequencing_data/data"
 
@@ -14,7 +14,7 @@ if (dir.exists(out.path) == FALSE) {
 
 ## DADA2 Parameters
 # Filter parameters
-dada2.truncLen = 400
+dada2.truncLen = 251
 dada2.maxN = 0
 dada2.maxEE = 3
 dada2.truncQ = 2

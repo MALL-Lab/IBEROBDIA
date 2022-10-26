@@ -3,6 +3,7 @@
 *.png
 *.Rmd
 *.html
+*.rds
 .DS_Store
 .Rhistory
 .Rapp.history
@@ -17,4 +18,4 @@ FastQC/
 01_sequencing_data/data/TL_350
 01_sequencing_data/data/TL_400
 01_sequencing_data/out
-02_preprocess_phy/data
+02_preprocess/data
