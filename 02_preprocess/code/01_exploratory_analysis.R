@@ -45,3 +45,18 @@ pca3D = plot_ly(x = df$Prevotella_9,
                       yaxis = list(title = "Bifidobacterium", tickfont = list(size = 12)),
                       zaxis = list(title = "UCG-002", tickfont = list(size = 12))))
 pca3D
+
+
+####
+df = readRDS("git/IBEROBDIA/02_preprocess/data/df_Genus.rds")
+rmv = c("CI", "Gender", "Statusv2", "Statusv3")
+df <- df[, ! names(df) %in% rmv, drop = F]
+names(df)[names(df) == "Status"] <- "target"
+df
+
+saveRDS(object = df, "git/IBEROBDIA/03_training/toRun/DF_genus.rds")
+
+####
+####
+####
+####
