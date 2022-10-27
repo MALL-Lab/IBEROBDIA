@@ -1,5 +1,5 @@
 # sh generator to all combinations
-setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/projects/IBEROBDIA/')
+setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/')
 source('03_training/config_file_mlr3.r')
 wd = getwd()
 # Execute in parallel from Cesga
