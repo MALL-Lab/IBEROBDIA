@@ -49,12 +49,12 @@ pca3D
 
 ####
 df = readRDS("git/IBEROBDIA/02_preprocess/data/df_Genus.rds")
-rmv = c("CI", "Gender", "Statusv2", "Statusv3")
+rmv = c("Status", "Gender", "Statusv2", "Statusv3")
 df <- df[, ! names(df) %in% rmv, drop = F]
-names(df)[names(df) == "Status"] <- "target"
+names(df)[names(df) == "CI"] <- "target"
 df
 
-saveRDS(object = df, "git/IBEROBDIA/03_training/toRun/DF_genus.rds")
+saveRDS(object = df, "git/IBEROBDIA/03_training/toRun/DF_CI_genus.rds")
 
 ####
 ####
