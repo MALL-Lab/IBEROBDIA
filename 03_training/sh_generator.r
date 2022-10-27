@@ -42,11 +42,11 @@ for (i in 1:length(input.paths)) {
     
     cat(paste("name=", input.paths[i], '\n', sep = ''))
     cat(paste("data=", input.dir.path, input.paths[i], '\n', sep = ''))
-    cat(paste('Rscript /mnt/netapp2/Store_uni/home/ulc/co/dfe/projects/IBEROBDIA/03_training/models/', input.algs[j],  " $data", " $name", sep=''))
+    cat(paste('Rscript /mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/03_training/models/', input.algs[j],  " $data", " $name", sep=''))
     
     sink(file = NULL)
     
-    system(paste('sbatch ', '/mnt/netapp2/Store_uni/home/ulc/co/dfe/projects/IBEROBDIA/03_training/exec/', substr(input.algs[j], 1, nchar(input.algs[j])-7) ,substr(input.paths[i], 1, nchar(input.paths[i])), '.sh', sep = ''))
+    system(paste('sbatch ', '/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/03_training/exec/', substr(input.algs[j], 1, nchar(input.algs[j])-7) ,substr(input.paths[i], 1, nchar(input.paths[i])), '.sh', sep = ''))
     
   } 
 }
