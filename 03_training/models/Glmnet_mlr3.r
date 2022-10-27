@@ -1,5 +1,5 @@
 setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/')
-source('03_training/config_file.r')
+source('03_training/config_file_mlr3.r')
 source('03_training/glmnetmlr3_slurm.r')
 
 args = commandArgs(trailingOnly = T)
