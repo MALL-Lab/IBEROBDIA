@@ -14,15 +14,15 @@ glmnet.bmr.slurm = function(data, set.seed, name, path = '', filename = '', cv.i
                          target = "target", positive ="OB")
   task$col_roles$stratum = "target"
   
-  # print('Removing Constant Features')
-  # rcf = po("removeconstants")
-  # rcf = rcf$train(list(task = task))
-  # task=rcf$output
+   print('Removing Constant Features')
+   rcf = po("removeconstants")
+   rcf = rcf$train(list(task = task))
+   task=rcf$output
   
-  # print('Normalizing Features')
-  # nf = po("scale")
-  # nf = nf$train(input = list(task))
-  # task = nf$output
+   print('Normalizing Features')
+   nf = po("scale")
+   nf = nf$train(input = list(task))
+   task = nf$output
 
   print('Select Hyperparameters')
   
