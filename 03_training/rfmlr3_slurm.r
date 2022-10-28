@@ -35,7 +35,7 @@ rf.bmr.slurm = function(data, name, path = '', filename = '', cv.inner, cv.outer
   if (cv.inner == 'CV') {
     inner = rsmp("cv", folds = 10)
   } else if (cv.inner == 'RepCV'){
-    inner = rsmp("repeated_cv", repeats= 50, folds = 10)
+    inner = rsmp("repeated_cv", repeats= 3, folds = 3)
   } else if(cv.inner == 'Holdout'){
     inner = rsmp("holdout", ratio = 0.6)
   }else{
@@ -66,7 +66,7 @@ rf.bmr.slurm = function(data, name, path = '', filename = '', cv.inner, cv.outer
   if (cv.outer == 'CV') {
     outer = rsmp("cv", folds = 10)
   } else if (cv.outer == 'RepCV'){
-    outer = rsmp("repeated_cv", repeats= 5, folds = 10)
+    outer = rsmp("repeated_cv", repeats= 3, folds = 3)
   } else if (cv.outer == 'Holdout'){
     outer = rsmp("holdout", ratio = 0.6)
   } else{

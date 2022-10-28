@@ -19,3 +19,9 @@ FastQC/
 01_sequencing_data/data/TL_400
 01_sequencing_data/out
 02_preprocess/data
+03_training/outs
+03_training/exec
+03_training/toRun
+03_training/toRun/first-experiment
+03_training/toRun/first-experiment
+03_training/results/first-experiment

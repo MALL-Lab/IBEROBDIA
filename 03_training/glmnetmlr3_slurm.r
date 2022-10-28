@@ -34,7 +34,7 @@ glmnet.bmr.slurm = function(data, set.seed, name, path = '', filename = '', cv.i
   if (cv.inner == 'CV') {
     inner = rsmp("cv", folds = 10)
   } else if (cv.inner == 'RepCV'){
-    inner = rsmp("repeated_cv", repeats= 5, folds = 10)
+    inner = rsmp("repeated_cv", repeats= 3, folds = 3)
   } else{
     inner = rsmp("holdout", ratio = 0.6)
   }
@@ -63,7 +63,7 @@ at = AutoTuner$new(learner = learner, resampling = inner, measure = measure,
   if (cv.outer == 'CV') {
     outer = rsmp("cv", folds = 10)
   } else if (cv.outer == 'RepCV'){
-    outer = rsmp("repeated_cv", repeats= 5, folds = 10)
+    outer = rsmp("repeated_cv", repeats= 3, folds = 3)
   } else if (cv.outer == 'Holdout'){
     outer = rsmp("holdout", ratio = 0.6)
   } else{
