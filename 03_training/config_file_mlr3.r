@@ -55,7 +55,7 @@ xg.max_depth = c(3, 18)
 # Cross validation parameters
 ## Supra parameters
 cv.inner = 'Holdout'
-cv.outer = 'repeated_cv'
+cv.outer = 'RepCV'
 
 ## Sub parameters
 ## Estos parámetros no los estás pasando a los modelos 
