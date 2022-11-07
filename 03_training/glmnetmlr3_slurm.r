@@ -8,10 +8,12 @@ glmnet.bmr.slurm = function(data, set.seed, name, path = '', filename = '', cv.i
   require(future)
 
   print('Making task')
+  pos = names(table(data$target))[1]
+  print(paste("Positive class", pos))
   data$target= as.factor(data$target)
   data[sapply(data, is.numeric)] <- lapply(data[sapply(data, is.numeric)], as.numeric)
   task = TaskClassif$new(id = paste(name, 'nfeat', ncol(data)-1, sep = '_'), backend = data ,
-                         target = "target", positive = names(table(data$target))[1])
+                         target = "target", positive = pos)
   # Ensure that the class of interest is first in declaring factor levels.
   task$col_roles$stratum = "target"
   
@@ -81,12 +83,16 @@ at = AutoTuner$new(learner = learner, resampling = inner, measure = measure,
     msr("classif.prauc", id = "PRAUC"),msr("classif.sensitivity", id = "Sensitivity"),
     msr("classif.specificity", id = "Specificity")
     )
-  
+  print("db1")
   df_iter = as.data.frame(bmr$score(measures))
-  cols = c("task_id", "learner_id", "iteration","Accuracy","AUCROC", "PRAUC","Sensitivity","Specificity"  )
+  print("db2")
+  cols = c("task_id", "learner_id","iteration","Accuracy","AUCROC", "PRAUC","Sensitivity","Specificity"  )
+  print("db3")
   df_iter = df_iter[cols]
+  print("db4")
   name2save = substr(name,1,nchar(name)-4)
-
+  print("db5")
+  
   saveRDS(bmr, file = paste(out.path, name2save, '_', out.filename.glmnet, sep = ''))
   saveRDS(df_iter, file = paste(out.path,"df_iter_", name2save, '_', out.filename.glmnet, sep = ''))
 
