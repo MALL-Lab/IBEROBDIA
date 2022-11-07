@@ -11,7 +11,8 @@ glmnet.bmr.slurm = function(data, set.seed, name, path = '', filename = '', cv.i
   data$target= as.factor(data$target)
   data[sapply(data, is.numeric)] <- lapply(data[sapply(data, is.numeric)], as.numeric)
   task = TaskClassif$new(id = paste(name, 'nfeat', ncol(data)-1, sep = '_'), backend = data ,
-                         target = "target", positive ="OB")
+                         target = "target", positive = names(table(data$target))[1])
+  # Ensure that the class of interest is first in declaring factor levels.
   task$col_roles$stratum = "target"
   
    print('Removing Constant Features')
