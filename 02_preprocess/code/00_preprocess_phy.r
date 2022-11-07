@@ -21,14 +21,14 @@ tax_table(phy)[1:5, 1:7]
 p = data.frame(sample_data(phy))
 # R adding a column to dataframe based on values in other columns(Health vs Affected(DT2,TGA,GAA):
 p<- p %>% 
-  mutate(Statusv2 = if_else(Status == "Health", "Health", "Affected"))
+  mutate(Statusv2 = if_else(Status == "Healthy", "Healthy", "Affected"))
 sample_data(phy) <- p
 p<- p %>% 
   mutate(Statusv3 = if_else(Status == "DT2", "DT2", "No_DT2"))
 sample_data(phy) <- p
 
 # Preprocess Phyloseq
-i = 6
+i = 7
 #1. Agglomerate in genus (There are very few species, if we agglomerate by these we lose most of them)
 g_phy = tax_glom(physeq = phy,taxrank=rank_names(phy)[i])
 

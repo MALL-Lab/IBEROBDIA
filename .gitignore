@@ -4,6 +4,7 @@
 *.Rmd
 *.html
 *.rds
+*.txt
 .DS_Store
 .Rhistory
 .Rapp.history
@@ -23,5 +24,6 @@ FastQC/
 03_training/exec
 03_training/toRun
 03_training/toRun/first-experiment
-03_training/toRun/first-experiment
+03_training/toRun/second-experiment
+03_training/toRun/third-experiment
 03_training/results/first-experiment

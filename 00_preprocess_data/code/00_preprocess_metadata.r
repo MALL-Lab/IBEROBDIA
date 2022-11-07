@@ -15,7 +15,7 @@ for (i in seq_along(names)) {
 metalist = list()
 for (i in seq_along(vars)) {
   if (length(vars[[i]]) == 3){
-    metalist[[i]] = c(vars[[i]][1],vars[[i]][2],"Health",vars[[i]][3])
+    metalist[[i]] = c(vars[[i]][1],vars[[i]][2],"Healthy",vars[[i]][3])
   }else{
     metalist[[i]] = vars[[i]]
   }
