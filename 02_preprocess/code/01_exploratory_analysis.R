@@ -52,36 +52,36 @@ df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
 rmv = c("Status", "Gender", "Statusv2", "Statusv3")
 df <- df[, ! names(df) %in% rmv, drop = F]
 names(df)[names(df) == "CI"] <- "target"
-df$target = factor(x = df$target, levels =c("OB", "NP"), ordered = TRUE)
+df$target = factor(x = df$target, levels =c("OB", "NP"))
 df$target = as.factor(df$target)
 saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_CI_",lvl,".rds"))
+names(table(df$target))
 
 df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
 rmv = c("CI", "Gender", "Statusv2", "Statusv3")
 df <- df[, ! names(df) %in% rmv, drop = F]
 names(df)[names(df) == "Status"] <- "target"
-df$target = factor(x = df$target, levels = c("DT2","TGA", "GAA", "Healthy"), ordered = TRUE)
+df$target = factor(x = df$target, levels = c("DT2","TGA", "GAA", "Healthy"))
 df$target = as.factor(df$target)
 saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_Status_",lvl,".rds"))
+names(table(df$target))
 
 df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
 rmv = c("CI", "Gender", "Status", "Statusv3")
 df <- df[, ! names(df) %in% rmv, drop = F]
 names(df)[names(df) == "Statusv2"] <- "target"
-df$target = factor(x = df$target, levels =c("Affected", "Healthy"), ordered = TRUE)
+df$target = factor(x = df$target, levels =c("Affected", "Healthy"))
 df$target = as.factor(df$target)
 saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_Healthy_",lvl,".rds"))
+names(table(df$target))
 
 df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
 rmv = c("CI", "Gender", "Status", "Statusv2")
 df <- df[, ! names(df) %in% rmv, drop = F]
 names(df)[names(df) == "Statusv3"] <- "target"
-df$target = factor(x = df$target, levels =c("DT2", "No_DT2"), ordered = TRUE)
+df$target = factor(x = df$target, levels =c("DT2", "No_DT2"))
 df$target = as.factor(df$target)
 saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_DT2_",lvl,".rds"))
-
-
-####
-####
+names(table(df$target))
 ####
 ####
