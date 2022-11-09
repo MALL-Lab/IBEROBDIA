@@ -2,8 +2,8 @@
 # ====
 setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA/')
 # Data path
-ExperimentName = 'fifth-experiment'
-input.dir.path = '03_training/toRun/fifth-experiment/'
+ExperimentName = 'third-experiment'
+input.dir.path = '03_training/toRun/third-experiment/'
 out.dir.path = '03_training/results/'
 out.path = paste(out.dir.path, ExperimentName, '/', sep = '')
 exec.dir.path = '03_training/exec/'
