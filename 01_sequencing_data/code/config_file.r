@@ -34,4 +34,4 @@ dada2.method = "consensus"
 dada2.path.refFasta = "/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/tax/silva_nr99_v138.1_train_set.fa.gz"
 dada2.tryRC = TRUE
 dada2.path.refFasta.species = "/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/tax/silva_species_assignment_v138.1.fa.gz"
-dada2.tryRC.species = FALSE
+dada2.tryRC.species = TRUE
