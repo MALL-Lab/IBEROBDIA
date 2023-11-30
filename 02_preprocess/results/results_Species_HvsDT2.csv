@@ -1,0 +1,8 @@
+"";"log2FoldChange";"pvalue";"padj";"reject";"Family";"Genus";"Species"
+"ASV30";8,33922108486799;0,0389498226820212;0,486872783525265;FALSE;"Rikenellaceae";"Alistipes";"Alistipes_putredinis"
+"ASV46";4,97161645752974;0,0110423200039497;0,333577723673814;FALSE;"Lachnospiraceae";"Dorea";"Dorea_longicatena"
+"ASV92";9,04642531341246;0,0154968092424311;0,333577723673814;FALSE;"Bifidobacteriaceae";"Bifidobacterium";"Bifidobacterium_longum"
+"ASV94";6,05685407736659;0,0148229376031931;0,333577723673814;FALSE;"Coriobacteriaceae";"Collinsella";"Collinsella_aerofaciens"
+"ASV140";7,20974423848163;0,0182191259092336;0,333577723673814;FALSE;"Lachnospiraceae";"Blautia";"Blautia_faecis"
+"ASV473";7,37261878916662;0,046095770069246;0,493883250741922;FALSE;"Bifidobacteriaceae";"Bifidobacterium";"Bifidobacterium_adolescentis"
+"ASV1785";6,74345452862181;0,0222385149115876;0,333577723673814;FALSE;"Butyricicoccaceae";"Butyricicoccus";"Butyricicoccus_faecihominis"

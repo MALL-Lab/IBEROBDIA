@@ -1,87 +1,55 @@
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-library(phyloseq)
+# Script to make DEA analysis 
+# -------------------------------------
+# 3 variables:
+# level :"Genus" or "Species"
+#
+# experiment:"DT2_All" "DT2_NoDT2 "DT2_P_H" "DT2_H" "Aff_H" "MS" "GS" "BMI" "IR"
+# "DPH_MS" "DPH_GS" "DPH_BMI" "DPH_GS_BMI" "AffH_MS" "AffH_GS" "AffH_BMI"
+# "AffH_GS_BMI" "AffH_MS_GS_BMI" "MS_GS" "MS_BMI" "MS_IR" "MS_GS_BMI" "BMI_IR"
+
+require(MicrobiomeStat)
+require(tibble)
+require(dplyr)
+library(ggpubr)
+library(vegan)
+library(microbiome)
 library(ggfortify)
-library(ggplot2)
-library(viridis)
-library(plotly)
-lvl = "Species" # Genus or Species
-phy = readRDS(paste0("../data/phy_",lvl ,".rds"))
+set.seed(123)
 
-#1. PCA
-#First of all we extract the data fram object with genus or species names instead of ASVs
-otu = as.data.frame(t(phy@otu_table@.Data))
-tax = as.data.frame(phy@tax_table@.Data)
-tax$otu_names <- rownames(tax)
-tax = as.data.frame(cbind(otus = tax$otu_names, genus = tax[,lvl]))
-#identical(rownames(otu), tax$otus)
-rownames(otu) = tax$genus
-meta = as.data.frame(phy@sam_data)
-#identical(rownames(meta), colnames(otu))
-otu = as.data.frame(t(otu))
-df = as.data.frame(cbind(meta, otu))
-# Saving that dataframe
-saveRDS(object = df, file = paste0("../data/df_",lvl,".rds"))
+# Declare variables 
+level <- "Genus"
+experiment <- "DT2_P_H"
+levels <- c("Healthy", "PreDT2","DT2" )
+# Load phyloseq
+phy <- readRDS(file = paste0("02_preprocess/data/phy_",
+                             level,"_v2.rds"))
+df <-  as.data.frame(as.matrix(sample_data(phy), rownames = NA))
+df <- df %>% 
+  select(MS, GS, BMI, DT2_P_H, Aff_H)
+sample_data(phy) <- df
 
-pca.re <- stats::prcomp(df[6:ncol(df)],
-                        center = TRUE,
-                        scale. = FALSE)
-ggplot2::autoplot(pca.re, data = df, colour = "Statusv3",
-                  shape = "Statusv3",size = 3)
+# Change name of the column experiment as Status to perform the analysis
+colnames(phy@sam_data)[colnames(phy@sam_data) == experiment] <- "Status"
+phy@sam_data$Status <-factor(x = as.factor(phy@sam_data$Status),
+                             levels = levels)
+table(phy@sam_data$Status)
+target <- "Status"
+ 
+# Alpha Diversity 
+rich <- estimate_richness(phy)
+pwt <- pairwise.wilcox.test(rich$Shannon, p.adjust.method = "none",
+                            sample_data(phy)$Status)
+pwt2 <- pairwise.wilcox.test(rich$Simpson, p.adjust.method = "none",
+                            sample_data(phy)$Status)
+pwt
+pwt2
 
-
-var = apply(df[5:ncol(df)][,3:length(colnames(df[5:ncol(df)]))],
-            2, function(x) var(na.omit(x)))
-var.ordenado <- sort(var,decreasing = T)
-names(var.ordenado[1:3])
-
-pca3D = plot_ly(x = df$Prevotella_9_copri, 
-                   y = df$Bacteroides_uniformis, 
-                   z = df$Bacteroides_caccae,
-                   type = "scatter3d", 
-                   mode = "markers",colors =  viridis(2),
-                   color = as.factor(df$Statusv3)) %>%
-  layout(legend = list(size = 35,orientation = "h", x = 0.3, y = 0),
-         scene = list(xaxis = list(title = "Prevotella_9_copri", tickfont = list(size = 12)),
-                      yaxis = list(title = "Bacteroides_uniformis", tickfont = list(size = 12)),
-                      zaxis = list(title = "Bacteroides_caccae", tickfont = list(size = 12))))
-pca3D
-
-
-####
-df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
-rmv = c("Status", "Gender", "Statusv2", "Statusv3")
-df <- df[, ! names(df) %in% rmv, drop = F]
-names(df)[names(df) == "CI"] <- "target"
-df$target = factor(x = df$target, levels =c("OB", "NP"))
-df$target = as.factor(df$target)
-saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_CI_",lvl,".rds"))
-names(table(df$target))
-
-df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
-rmv = c("CI", "Gender", "Statusv2", "Statusv3")
-df <- df[, ! names(df) %in% rmv, drop = F]
-names(df)[names(df) == "Status"] <- "target"
-df$target = factor(x = df$target, levels = c("DT2","TGA", "GAA", "Healthy"))
-df$target = as.factor(df$target)
-saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_Status_",lvl,".rds"))
-names(table(df$target))
-
-df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
-rmv = c("CI", "Gender", "Status", "Statusv3")
-df <- df[, ! names(df) %in% rmv, drop = F]
-names(df)[names(df) == "Statusv2"] <- "target"
-df$target = factor(x = df$target, levels =c("Affected", "Healthy"))
-df$target = as.factor(df$target)
-saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_Healthy_",lvl,".rds"))
-names(table(df$target))
-
-df = readRDS(paste0("~/git/IBEROBDIA/02_preprocess/data/df_",lvl,".rds"))
-rmv = c("CI", "Gender", "Status", "Statusv2")
-df <- df[, ! names(df) %in% rmv, drop = F]
-names(df)[names(df) == "Statusv3"] <- "target"
-df$target = factor(x = df$target, levels =c("DT2", "No_DT2"))
-df$target = as.factor(df$target)
-saveRDS(object = df, paste0("~/git/IBEROBDIA/03_training/toRun/DF_DT2_",lvl,".rds"))
-names(table(df$target))
-####
-####
+# Beta diversity
+dist = phyloseq::distance(phy,
+                          method ="bray",
+                          weighted = F)
+dist2 = phyloseq::distance(phy,
+                          method ="chao",
+                          weighted = F)
+adonis2(dist ~ sample_data(phy)$Status)
+adonis2(dist2 ~ sample_data(phy)$Status)

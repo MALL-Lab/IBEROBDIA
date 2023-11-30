@@ -5,11 +5,14 @@
 *.html
 *.rds
 *.txt
+*.docx
+*.svg
 .DS_Store
 .Rhistory
 .Rapp.history
 extdata/
 FastQC/
+files2rmd/
 00_preprocess_data/data
 01_sequencing_data/data/first_phy.rds
 01_sequencing_data/data/TL_251
@@ -27,3 +30,6 @@ FastQC/
 03_training/toRun/second-experiment
 03_training/toRun/third-experiment
 03_training/results/first-experiment
+IB_RE
+figures
+.Rproj.user

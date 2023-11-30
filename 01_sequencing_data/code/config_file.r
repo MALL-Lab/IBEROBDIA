@@ -16,7 +16,7 @@ if (dir.exists(out.path) == FALSE) {
 # Filter parameters
 dada2.truncLen = 251
 dada2.maxN = 0
-dada2.maxEE = 3
+dada2.maxEE = 4
 dada2.truncQ = 2
 dada2.trimLeft = 15
 
