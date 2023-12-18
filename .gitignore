@@ -7,6 +7,7 @@
 *.txt
 *.docx
 *.svg
+*.csv
 .DS_Store
 .Rhistory
 .Rapp.history
@@ -23,6 +24,7 @@ files2rmd/
 01_sequencing_data/data/TL_400
 01_sequencing_data/out
 02_preprocess/data
+02_preprocess/results
 03_training/outs
 03_training/exec
 03_training/toRun

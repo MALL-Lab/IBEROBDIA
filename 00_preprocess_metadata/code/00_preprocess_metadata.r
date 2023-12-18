@@ -1,4 +1,5 @@
-# Clinical Data
+# Preprocess_metadata
+
 ## Clinical Data Extraction
 require(tibble)
 require(readxl)
@@ -66,4 +67,4 @@ metadata <- full_df %>%
   mutate(IR = ifelse(IR == "Rango saludable", "No_IR", IR)) %>%   # No resistance
   column_to_rownames(var = "Sample_ID")
 
-saveRDS(object = metadata, file = "00_preprocess_metadata/data/clinical_data_v2.rds")
+saveRDS(object = metadata, file = "00_preprocess_metadata/data/clinical_data.rds")
