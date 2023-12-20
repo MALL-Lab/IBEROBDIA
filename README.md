@@ -31,18 +31,6 @@ The participants of this research belong to the project IBEROBDIA: "Obesity and 
 
 ### Figures
 [figures](https://github.com/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA/tree/main/figures/code) In this folder are all the scripts needed to generate the figures of the paper. In the scripts 00_prepare_data.r, 01_extract_top_FamGen.r and 02_make_custom_palette.r intermediate data are generated to generate the figures.
-
-## Contact
-
-If you have any questions, comments, or suggestions, please feel free to
-contact us at:
-
-- Diego Fernández Edreira
-  - Email: <diego.fedreira@udc.es>
-  - Twitter: [@diego_edreira](https://twitter.com/diego_edreira)
-  - GitHub: [DiegoFE94](https://github.com/DiegoFE94/)
-- Jose Liñares Blanco
-  - Email: <j.linares@udc.es>
   - Twitter: [@8JoseLinares](https://twitter.com/8JoseLinares)
   - GitHub: [jlinaresb](https://github.com/jlinaresb)
 - Carlos Fernández Lozano
