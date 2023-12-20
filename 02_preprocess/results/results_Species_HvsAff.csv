@@ -1,8 +1,0 @@
-"";"log2FoldChange";"pvalue";"padj";"reject";"Family";"Genus";"Species"
-"ASV41";7,2392610329904;0,00426210813293002;0,159829054984876;FALSE;"Lachnospiraceae";"Anaerostipes";"Anaerostipes_hadrus"
-"ASV46";7,31174750960647;0,000185308513699931;0,0138981385274948;TRUE;"Lachnospiraceae";"Dorea";"Dorea_longicatena"
-"ASV57";5,46357354779776;0,024902302740639;0,373534541109586;FALSE;"Lachnospiraceae";"Fusicatenibacter";"Fusicatenibacter_saccharivorans"
-"ASV92";7,24453172252481;0,0370735902533645;0,397217038428905;FALSE;"Bifidobacteriaceae";"Bifidobacterium";"Bifidobacterium_longum"
-"ASV94";5,23049320708147;0,0231495174437361;0,373534541109586;FALSE;"Coriobacteriaceae";"Collinsella";"Collinsella_aerofaciens"
-"ASV282";8,11153531102946;0,0345494252435355;0,397217038428905;FALSE;"Bifidobacteriaceae";"Bifidobacterium";"Bifidobacterium_bifidum"
-"ASV1138";6,497853106244;0,0194999549190103;0,373534541109586;FALSE;"Lachnospiraceae";"Lachnoclostridium";"Lachnoclostridium_edouardi"

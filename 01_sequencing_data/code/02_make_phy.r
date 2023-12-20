@@ -2,7 +2,7 @@
 library(phyloseq)
 library(dplyr)
 # Load Clinical Data and prepare paths
-metadata = readRDS("00_preprocess_metadata/data/clinical_data_v2.rds") 
+metadata = readRDS("00_preprocess_metadata/data/clinical_data.rds") 
 path ="01_sequencing_data/data/"
 truncL <- sort(list.files(path, pattern = "TL_251"))
 nams <- paste(truncL, "phy", sep="_")
@@ -43,5 +43,5 @@ for (i in seq_along(truncL)) {
 # Rename and save phy.objects
 names(phy_list) = nams
 for (i in seq_along(phy_list)) {
-  saveRDS(object =phy_list[[i]],file = paste(path, truncL[i], paste0(names(phy_list[i]),"_v2.rds"),sep = "/" ))
+  saveRDS(object =phy_list[[i]],file = paste(path, truncL[i], paste0(names(phy_list[i]),".rds"),sep = "/" ))
 }
