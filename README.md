@@ -1,13 +1,37 @@
 # Study of the faecal microbiome of patients with metabolic syndrome and type 2 diabetes
 
+## Authors
+
+Laura Isabel Sinisterra Loaiza<sup>1†</sup>, Diego Fernandez-Edreira<sup>2†</sup>, Jose Liñares-Blanco<sup>2</sup>, Alberto Cepeda<sup>1</sup>, Alejandra Cardelle-Cobas<sup>1</sup>, Carlos Fernandez-Lozano<sup>2*</sup>
+
+<sup>1</sup>Machine Learning in Life Sciences Lab. Dept. of Computer Science and Information Technologies, Universidade da Coruña (CITIC), A Coruña, Spain.
+
+<sup>2</sup>Department of Analytical Chemistry, Nutrition and Bromatology. Faculty of Veterinary Medicine. Universidade de Santiago de Compostela, Campus de Lugo. Lugo, Spain.
+
+<sup>*</sup>Corresponding author(s). E-mail(s): carlos.fernandez@udc.es;
+
+Contributing authors: laura.sinisterra@usc.es; diego.fedreira@udc.es; j.linares@udc.es; alberto.cepeda@usc.es; alejandra.cardelle@usc.es;
+
+<sup>†</sup>These authors contributed equally to this work.
+
 ## Citation
 
 Article is open access here.
 
 DOI: link DOI
 
-## Cohort description
-The participants of this research belong to the project IBEROBDIA: "Obesity and Diabetes in Iberoamerica: Risk factors and new pathogenic and predictive biomarkers", funded by the Iberoamerican programme of Science and Technology for Development (CyTED) (918PTE0540) and by the Spanish State Research Agency (PCI2018-093245, and PCI2018-093284). This project has the approval of the ethics committee of the Galician Health System (SERGAS, Xunta de Galicia), code 2018/270. All data were processed in accordance with the organic law 3/2018, of 5 December, on the protection of personal data and the guarantee of digital rights. A total of 79 volunteers from the autonomous community of Galicia met the inclusion/exclusion criteria of the project and participated in this study. This cohort presents 59 healthy individuals, 15 pre-diabetic, and 5 patients with T2D. Of these 59 healthy patients 36 suffer from obesity. In addition, this cohort has 24 (only 2 patients with normal weight) patients classified as having MS and 55 who do not. Of these 55 patients who do not suffer from MS 34 are obese. These volunteers underwent an 8-hour fasting glucose tolerance test using the 75 g oral glucose solution (200 mL, Lambra Glucomedics®, Lambra, Madrid, Spain) and a body composition assessment using the InBody 127 digital scale (Microcaya S. L., Bilbao, Spain). Participants were provided with a sterile anaclin for the collection of faecal samples at home. Once collected, the sample had to be transported to the laboratory within two hours, where it was kept frozen until analysis.
+## Recruitment and Participants
+The participants of this research belong to the project IBEROBDIA: “Obesity and Diabetes in Iberoamerica: Risk factors and new pathogenic and predictive biomarkers”, funded by the Iberoamerican Program of Science and Technology (CyTED) (918PTE0540) and by the Spanish State Research Agency (PCI2018-093284). This project has the approval of the ethics committee of the Galician Health System (SERGAS, Xunta de Galicia), code 2018/270. All the participants included in the study were adequately informed about the process and signed an informed consent. Data from volunteers were processed in accordance with the organic law 3/2018, of 5 December, on the protection of personal data and the guarantee of digital rights.
+The participants in this study were recruited through the dissemination of the project in different media, press, radio, posters, etc. in different locations of from the autonomous community of Galicia, Spain.
+Inclusion criteria for participation in the project included: i) Spanish adults aged 40 to 70 years, ii) Body Mass Index (BMI) of $18.5-24.9$ (normal weight), or $IMC \geq 27 kg/m2$, iii) FINDRISC SCORE $\geq 12$, indicating a moderate of T2D development.
+Exclusion criteria were: i) antibiotic and probiotic treatment in the past two months, ii) diagnostic of T2D, iii) presence of other chronic diseases, iii) pregnancy iv) antibiotic consumption in the last to 2 months prior the study, v) chronic medication (hypertension, cholesterol, contraceptives, proton pump inhibitors, etc., v) drug consumption and vi) low risk of developing diabetes according the FINDRISC test.
+
+## Funding
+The authors thank the CyTED, Spain and each National Organism for Science and Technology for funding the IBEROBDIA project (P918PTE0409). In this regard, Spain specifically thanks the Ministry of Economy and Competitiveness for the financial support for this project through the State Program of I+D+I Oriented to the Challenges of Society 2017–2020 (International Joint Programming 2018), project (PCI2018-093245).
+
+CITIC is funded by the Xunta de Galicia through the collaboration agreement between the Ministry of Culture, Education, Vocational Training, and Universities and the Galician universities for the strengthening of research centers in the University System of Galicia (CIGUS). The authors acknowledge the support of CESGA (Centro de Supercomputación de Galicia) for providing computing resources and related technical support that contributed to the research results reported in this paper. 
+
+JLB work was financed by the Spanish Ministry of Universities by means of the Margarita Salas (RSUC.UDC.MS06) linked to the European Union through the NextGenerationEU program.
 
 ## Project workflow
 
@@ -31,9 +55,3 @@ The participants of this research belong to the project IBEROBDIA: "Obesity and 
 
 ### Figures
 [figures](https://github.com/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA/tree/main/figures/code) In this folder are all the scripts needed to generate the figures of the paper. In the scripts 00_prepare_data.r, 01_extract_top_FamGen.r and 02_make_custom_palette.r intermediate data are generated to generate the figures.
-  - Twitter: [@8JoseLinares](https://twitter.com/8JoseLinares)
-  - GitHub: [jlinaresb](https://github.com/jlinaresb)
-- Carlos Fernández Lozano
-  - Email: <carlos.fernandez@udc.es>
-  - Twitter: [@cafernandezlo](https://twitter.com/cafernandezlo)
-  - GitHub: [cafernandezlo](https://github.com/cafernandezlo)
