@@ -1,5 +1,12 @@
 # Study of the faecal microbiome of patients with metabolic syndrome and type 2 diabetes
 
+
+[![DOI](https://zenodo.org/badge/473937600.svg)](https://doi.org/10.5281/zenodo.14051703)
+![GitHub release](https://img.shields.io/github/v/release/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA?label=release)
+![Maintenance](https://img.shields.io/badge/Maintenance-Actively%20Maintained-brightgreen)
+![GitHub contributors](https://img.shields.io/github/contributors/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA)
+![GitHub last commit](https://img.shields.io/github/last-commit/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA)
+
 ## Authors
 
 Laura Isabel Sinisterra Loaiza<sup>1†</sup>, Diego Fernandez-Edreira<sup>2†</sup>, Jose Liñares-Blanco<sup>2</sup>, Alberto Cepeda<sup>1</sup>, Alejandra Cardelle-Cobas<sup>1</sup>, Carlos Fernandez-Lozano<sup>2*</sup>
@@ -27,11 +34,7 @@ Inclusion criteria for participation in the project included: i) Spanish adults 
 Exclusion criteria were: i) antibiotic and probiotic treatment in the past two months, ii) diagnostic of T2D, iii) presence of other chronic diseases, iii) pregnancy iv) antibiotic consumption in the last to 2 months prior the study, v) chronic medication (hypertension, cholesterol, contraceptives, proton pump inhibitors, etc., v) drug consumption and vi) low risk of developing diabetes according the FINDRISC test.
 
 ## Funding
-The authors thank the CyTED, Spain and each National Organism for Science and Technology for funding the IBEROBDIA project (P918PTE0409). In this regard, Spain specifically thanks the Ministry of Economy and Competitiveness for the financial support for this project through the State Program of I+D+I Oriented to the Challenges of Society 2017–2020 (International Joint Programming 2018), project (PCI2018-093245).
-
-CITIC is funded by the Xunta de Galicia through the collaboration agreement between the Ministry of Culture, Education, Vocational Training, and Universities and the Galician universities for the strengthening of research centers in the University System of Galicia (CIGUS). The authors acknowledge the support of CESGA (Centro de Supercomputación de Galicia) for providing computing resources and related technical support that contributed to the research results reported in this paper. 
-
-JLB work was financed by the Spanish Ministry of Universities by means of the Margarita Salas (RSUC.UDC.MS06) linked to the European Union through the NextGenerationEU program.
+This work was supported by the CyTED, Spain and National Organism for Science and Technology, founding the IBEROBDIA project (P918PTE0409). This work was financially supported by Spain specifically thanks the Ministry of Economy and Competitiveness through the State Program of I+D+I Oriented to the Challenges of Society 2017–2020 (International Joint Programming 2018), projects (PCI2018-093245, and PCI2018-093284). CITIC is funded by the Xunta de Galicia through the collaboration agreement between the Ministry of Culture, Education, Vocational Training, and Universities and the Galician universities for the strengthening of research centers in the University System of Galicia (CIGUS). The authors acknowledge the support of CESGA (Centro de Supercomputación de Galicia) for providing computing resources and related technical support that contributed to the research results reported in this paper. JLB work was financed by the Spanish Ministry of Universities by means of the Margarita Salas (RSUC.UDC.MS06) linked to the European Union through the NextGenerationEU program.
 
 ## Project workflow
 
