@@ -52,16 +52,20 @@ p1 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.title.x = element_text(size = 7),
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
-                                    fill=NA,
-                                    size=1))
-
+                                    fill = NA,
+                                    size = 1)) +
+  annotate("text", x = -2.4, y = 0.1, label = "Healthy",
+           color = "#91b94b", size = 3, hjust = 0) +
+  annotate("text", x = 2.4, y = 0.1, label = "MS",
+           color = "#c58338", size = 3, hjust = 1)
+p1
 ggsave(
   p1,
-  filename = "fig2a1.svg",
-  device = "svg",
+  filename = "fig2a1.png",
+  device = "png",
   path = "figures/plots/",
-  width = 110, 
-  height = 69, 
+  width = 110,
+  height = 80,
   units = "mm")
 
 
@@ -106,13 +110,17 @@ p2 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
-
+                                    size=1)) +
+  annotate("text", x = -1.8, y = 0.1, label = "Healthy",
+           color = "#91b94b", size = 3, hjust = 0) +
+  annotate("text", x = 2.08, y = 0.1, label = "MS",
+           color = "#c58338", size = 3, hjust = 1)
+p2
 ggsave(
   p2,
-  filename = "fig2b1.svg",
-  device = "svg",
+  filename = "fig2b1.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
-  height = 69, 
+  height = 80, 
   units = "mm")

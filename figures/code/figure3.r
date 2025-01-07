@@ -10,6 +10,7 @@ library(ComplexHeatmap)
 library(viridisLite)
 library("writexl")
 palette <- readRDS(file = "figures/data/custom_palette.rds")
+colrs <- c("#6194b9", "#55ad9f", "#7770a5")
 # Healthy vs Prediabetic
 # A1
 ps = readRDS("figures/data/phy_genus_DT2_P_H.rds")
@@ -58,12 +59,16 @@ p1 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
-
+                                    size=1)) +
+  annotate("text", x = -9, y = 0.1, label = "Healthy",
+           color = "#6194b9", size = 3, hjust = 0) +
+  annotate("text", x = 7.5, y = 0.1, label = "PreT2D",
+           color = "#55ad9f", size = 3, hjust = 1)
+p1
 ggsave(
   p1,
-  filename = "fig3a1.svg",
-  device = "svg",
+  filename = "fig3a1.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 
@@ -105,12 +110,16 @@ p2 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
+                                    size=1)) + 
+  annotate("text", x = -9, y = 0.1, label = "Healthy",
+           color = "#6194b9", size = 3, hjust = 0) +
+  annotate("text", x = 5.5, y = 0.1, label = "T2D",
+           color = "#7770a5", size = 3, hjust = 1)
 
 ggsave(
   p2,
-  filename = "fig3b1.svg",
-  device = "svg",
+  filename = "fig3b1.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 
@@ -163,12 +172,16 @@ p3 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
+                                    size=1)) +
+  annotate("text", x = -2.7, y = 0.1, label = "PreT2D",
+           color = "#55ad9f", size = 3, hjust = 1) +
+  annotate("text", x = 5.5, y = 0.1, label = "T2D",
+           color = "#7770a5", size = 3, hjust = 1)
 
 ggsave(
   p3,
-  filename = "fig3c1.svg",
-  device = "svg",
+  filename = "fig3c1.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 
@@ -219,12 +232,16 @@ p4 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
+                                    size=1)) +
+  annotate("text", x = -5.9, y = 0.1, label = "Healthy",
+           color = "#6194b9", size = 3, hjust = 0) +
+  annotate("text", x = 5.9, y = 0.1, label = "PreT2D",
+           color = "#55ad9f", size = 3, hjust = 1)
 
 ggsave(
   p4,
-  filename = "fig3a2.svg",
-  device = "svg",
+  filename = "fig3a2.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 
@@ -259,12 +276,16 @@ p5 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
+                                    size=1)) + 
+  annotate("text", x = -5.9, y = 0.1, label = "Healthy",
+           color = "#6194b9", size = 3, hjust = 0) +
+  annotate("text", x = 3.5, y = 0.1, label = "T2D",
+           color = "#7770a5", size = 3, hjust = 1)
 
 ggsave(
   p5,
-  filename = "fig3b2.svg",
-  device = "svg",
+  filename = "fig3b2.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 
@@ -313,12 +334,16 @@ p6 <- ggplot(df2plot, aes(x = log2FoldChange, y = -log10(pvalue))) +
         axis.text = element_text(size = 7),
         panel.border = element_rect(colour = "black",
                                     fill=NA,
-                                    size=1))
+                                    size=1)) +
+  annotate("text", x = -2.1, y = 0.1, label = "PreT2D",
+           color = "#55ad9f", size = 3, hjust = 1) +
+  annotate("text", x = 2.8, y = 0.1, label = "T2D",
+           color = "#7770a5", size = 3, hjust = 1)
 
 ggsave(
   p6,
-  filename = "fig3c2.svg",
-  device = "svg",
+  filename = "fig3c2.png",
+  device = "png",
   path = "figures/plots/",
   width = 110, 
   height = 69, 

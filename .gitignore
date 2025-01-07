@@ -8,6 +8,7 @@
 *.docx
 *.svg
 *.csv
+._*
 .DS_Store
 .Rhistory
 .Rapp.history

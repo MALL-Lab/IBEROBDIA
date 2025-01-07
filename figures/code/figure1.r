@@ -7,6 +7,7 @@ library(ggpubr)
 library(ggplot2)
 library(phylosmith)
 library(writexl)
+library(vegan)
 set.seed(111)
 palette <- readRDS(file = "figures/data/custom_palette.rds")
 
@@ -38,10 +39,10 @@ p1 <- df_top10 %>%
 
 ggsave(
   p1,
-  filename = "fig1a1.svg",
-  device = "svg",
+  filename = "fig1a1.png",
+  device = "png",
   path = "figures/plots/",
-  width = 70, 
+  width = 63, 
   height = 69, 
   units = "mm")
 
@@ -50,19 +51,19 @@ phy <- readRDS(file = "02_preprocess/data/phy_Family.rds")
 phy <- tax_glom(physeq = phy, taxrank = "Family")
 phy <- transform_sample_counts(phy, function(ASV) ASV/sum(ASV))
 df <- psmelt(phy)
-df_top10 <- df %>% 
-  group_by(Family) %>% 
-  summarize(total_abundancia = sum(Abundance)) %>% 
+df_top10 <- df %>%
+  group_by(Family) %>%
+  summarize(total_abundancia = sum(Abundance)) %>%
   top_n(10, total_abundancia)
-df_resto <- df %>% 
-  anti_join(df_top10, by = "Family") %>% 
+df_resto <- df %>%
+  anti_join(df_top10, by = "Family") %>%
   summarize(Family = "Others", total_abundancia = sum(Abundance))
 df_plot <- bind_rows(df_top10, df_resto)
 p2 <- df_plot %>%
   mutate(Family = fct_reorder(Family, desc(total_abundancia))) %>%
   ggplot(aes(x = Family, y = total_abundancia, fill = Family)) +
   geom_bar(stat = "identity") + theme_bw() +
-  theme(axis.text.x = element_text(angle = 35,
+  theme(axis.text.x = element_text(angle = 40,
                                    size = 6,
                                    hjust = 1),
         axis.title.y = element_text(size = 8),
@@ -70,17 +71,17 @@ p2 <- df_plot %>%
         legend.position = "none",
         legend.box = "horizontal",
         legend.text = element_text(size = 7)) +
-  scale_y_continuous(limits=c(0, 45)) +
+  scale_y_continuous(limits = c(0, 45)) +
   labs(x = "", y = "Relative Abundance (%)") +
   scale_fill_manual(values = palette)
 
 ggsave(
   p2,
-  filename = "fig1a2.svg",
-  device = "svg",
+  filename = "fig1a2.png",
+  device = "png",
   path = "figures/plots/",
-  width = 75, 
-  height = 71, 
+  width = 70, 
+  height = 73, 
   units = "mm")
 
 # 1.Genus Abundancies
@@ -88,11 +89,11 @@ phy <- readRDS(file = "02_preprocess/data/phy_Genus.rds")
 phy <- tax_glom(physeq = phy, taxrank = "Genus")
 phy <- transform_sample_counts(phy, function(ASV) ASV/sum(ASV))
 df <- psmelt(phy)
-df_top10 <- df %>% 
-  group_by(Genus) %>% 
-  summarize(total_abundancia = sum(Abundance)) %>% 
+df_top10 <- df %>%
+  group_by(Genus) %>%
+  summarize(total_abundancia = sum(Abundance)) %>%
   top_n(10, total_abundancia)
-df_resto <- df %>% 
+df_resto <- df %>%
   anti_join(df_top10, by = "Genus") %>% 
   summarize(Genus = "Others", total_abundancia = sum(Abundance))
 df_plot <- bind_rows(df_top10, df_resto)
@@ -114,13 +115,13 @@ p3 <- df_plot %>%
 
 ggsave(
   p3,
-  filename = "fig1a3.svg",
-  device = "svg",
+  filename = "fig1a3.png",
+  device = "png",
   path = "figures/plots/",
   width = 70, 
   height = 75, 
   units = "mm")
-####A####
+#### A ####
 
 ####B####
 c_palette <- readRDS(file = "figures/data/custom_palette_species.rds")
@@ -142,7 +143,7 @@ p_ra <- phylogeny_profile(phyloseq_obj = phy, relative_abundance = TRUE,
 p4 <- p_ra + theme_bw() +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -152,19 +153,19 @@ p4 <- p_ra + theme_bw() +
         legend.title = element_blank(),
         legend.key = element_rect(fill = "transparent"),
         legend.key.size = unit(0.4, 'cm'), #change legend key size
-        legend.text = element_text(size=6, color = "black"),
+        legend.text = element_text(size= 6),
         strip.text = element_text(size = rel(1.2)),
         panel.background = element_blank(),
         panel.spacing = unit(1, "lines"),
         panel.grid.major.y = element_blank(),
-        strip.background=element_rect(fill="white")
+        strip.background = element_rect(fill = "white")
   ) +  scale_fill_manual(values = c_palette)
-
-exc <-as.data.frame(p4$data[,1:4])
+p4
+exc <- as.data.frame(p4$data[, 1:4])
 ggsave(
   p4,
-  filename = "fig1b1.svg",
-  device = "svg",
+  filename = "fig1b1.png",
+  device = "png",
   path = "figures/plots/",
   width = 100, 
   height = 75, 
@@ -178,6 +179,7 @@ sample_data(phy)$DT2_P_H <- as.factor(sample_data(phy)$DT2_P_H)
 levels(sample_data(phy)$DT2_P_H)
 sample_data(phy)$DT2_P_H <- factor(sample_data(phy)$DT2_P_H, levels = c("Healthy", "PreDT2", "DT2"))
 levels(sample_data(phy)$DT2_P_H)
+levels(sample_data(phy)$DT2_P_H) <- c("Healthy", "PreT2D", "T2D")
 
 target <- "DT2_P_H"
 phy <- merge_samples(x = phy, group = target, fun = sum)
@@ -187,7 +189,7 @@ p_ra <- phylogeny_profile(phyloseq_obj = phy, relative_abundance = TRUE,
 p5 <- p_ra + theme_bw() +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -197,7 +199,7 @@ p5 <- p_ra + theme_bw() +
         legend.title = element_blank(),
         legend.key = element_rect(fill = "transparent"),
         legend.key.size = unit(0.4, 'cm'), #change legend key size
-        legend.text = element_text(size=6, color = "black"),
+        legend.text = element_text(size=6),
         strip.text = element_text(size = rel(1.2)),
         panel.background = element_blank(),
         panel.spacing = unit(1, "lines"),
@@ -205,13 +207,13 @@ p5 <- p_ra + theme_bw() +
         strip.background=element_rect(fill="white")
   ) +  scale_fill_manual(values = c_palette)
 exc <- rbind(exc, as.data.frame(p5$data[,1:4]))
-
+p5
 write_xlsx(exc,"figures/results/phylum_ratios.xlsx")
 
 ggsave(
   p5,
-  filename = "fig1b2.svg",
-  device = "svg",
+  filename = "fig1b2.png",
+  device = "png",
   path = "figures/plots/",
   width = 100.75, 
   height = 75, 
@@ -248,7 +250,7 @@ p6 <- ggscatter(data = totest, x = "status", y ="shanon",color = "status") +
   theme_bw() +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -268,8 +270,8 @@ p6 <- ggscatter(data = totest, x = "status", y ="shanon",color = "status") +
 
 ggsave(
   p6,
-  filename = "fig1c1.svg",
-  device = "svg",
+  filename = "fig1c1.png",
+  device = "png",
   path = "figures/plots/",
   width = 42.75, 
   height = 60, 
@@ -293,7 +295,7 @@ p7 <- ggscatter(data = totest, x = "status", y ="simpson",color = "status") +
   theme_bw() +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -313,8 +315,8 @@ p7 <- ggscatter(data = totest, x = "status", y ="simpson",color = "status") +
 
 ggsave(
   p7,
-  filename = "fig1c2.svg",
-  device = "svg",
+  filename = "fig1c2.png",
+  device = "png",
   path = "figures/plots/",
   width = 42.75, 
   height = 60, 
@@ -330,21 +332,19 @@ ps@sam_data$dummy <- "Bray"
 set.seed(111)
 a <- adonis2(dist ~ sample_data(ps)$Status,permutations = 1000)
 a <- a$`Pr(>F)`[1]
-p8 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
-  geom_point(size = 4.5) +
+p8 <- plot_ordination(ps,type = "samples", ordination, color ="Status") +
+  geom_point(size = 3.5) +
   annotate(geom="text", x=0, y=0.50,size =2,
            label=paste0("p.adj = ", round(a,digits = 4)),
           color="black") +
   stat_ellipse(aes(fill = Status)) +
   theme_bw() +
-  theme(axis.title.x = element_text(size = 8),
-        axis.title.y = element_text(size = 8),
-        axis.text.x = element_text(color = "black",
-                                   size = 6),
+  theme(axis.title.x = element_text(size = 7, color = "#353333"),
+        axis.title.y = element_text(size = 7, color = "#353333"),
         strip.text.x = element_text(size = 6),
-        axis.text = element_text(size = 7),
+        axis.text = element_blank(),
         axis.ticks.y = element_blank(),
-        axis.ticks.x = element_line(),
+        axis.ticks.x = element_blank(),
         legend.position = "none",
         legend.title = element_blank(),
         legend.text = element_text(color = "black"),
@@ -358,11 +358,11 @@ p8 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
 
 ggsave(
   p8,
-  filename = "fig1d1.svg",
-  device = "svg",
+  filename = "fig1d1.png",
+  device = "png",
   path = "figures/plots/",
-  width = 65, 
-  height = 60, 
+  width = 58, 
+  height = 57.5, 
   units = "mm")
 
 # Chao distance
@@ -375,20 +375,18 @@ ps@sam_data$dummy <- "Chao"
 a <- adonis2(dist ~ sample_data(ps)$Status,permutations = 1000)
 a <- a$`Pr(>F)`[1]
 p9 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
-  geom_point(size = 4.5) +
+  geom_point(size = 3.5) +
   annotate(geom="text", x=0, y=0.30,size =2,
            label=paste0("p.adj = ", round(a,digits = 4)),
            color="black") +
   stat_ellipse(aes(fill = Status)) +
   theme_bw() +
-  theme(axis.title.x = element_text(size = 8),
-        axis.title.y = element_text(size = 8),
-        axis.text.x = element_text(color = "black",
-                                   size = 6),
+  theme(axis.title.x = element_text(size = 7, color = "#353333"),
+        axis.title.y = element_text(size = 7, color = "#353333"),
         strip.text.x = element_text(size = 6),
-        axis.text = element_text(size = 7),
+        axis.text = element_blank(),
         axis.ticks.y = element_blank(),
-        axis.ticks.x = element_line(),
+        axis.ticks.x = element_blank(),
         legend.position = "none",
         legend.title = element_blank(),
         legend.text = element_text(color = "black"),
@@ -402,11 +400,11 @@ p9 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
 
 ggsave(
   p9,
-  filename = "fig1d2.svg",
-  device = "svg",
+  filename = "fig1d2.png",
+  device = "png",
   path = "figures/plots/",
-  width = 65, 
-  height = 60, 
+  width = 58, 
+  height = 57.5, 
   units = "mm")
 
 #### MS ####
@@ -415,6 +413,8 @@ ggsave(
 
 #### DT2 ####
 ps <- readRDS("figures/data/phy_genus_DT2_P_H.rds")
+levels(sample_data(ps)$Status)
+levels(sample_data(ps)$Status) <- c("Healthy", "PreT2D", "T2D")
 colrs <- c("#80B1D3", "#8DD3C7", "#BEBADA")
 # Alpha Div
 rich <- estimate_richness(ps)
@@ -439,13 +439,13 @@ stat_test <- stat_test %>%
 p10 <- ggscatter(data = totest, x = "status", y ="shanon",color = "status") +
   geom_boxplot(fill = colrs, color = "azure4",
                outlier.color = "black", outlier.shape = 2 )+
-  annotate(geom="text", x="PreDT2", y=3.50,size =2,
+  annotate(geom="text", x="PreT2D", y=3.50,size =2,
            label=paste0("p.adj = ", round(stat_test$p.adj,digits = 4)),
            color="black") +
   theme_bw() +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -462,10 +462,11 @@ p10 <- ggscatter(data = totest, x = "status", y ="shanon",color = "status") +
         panel.grid.major.y = element_blank(),
         strip.background=element_rect(fill="white")
   ) + facet_grid(. ~ dummy) + scale_color_manual(values = colrs)
+
 ggsave(
   p10,
-  filename = "fig1c3.svg",
-  device = "svg",
+  filename = "fig1c3.png",
+  device = "png",
   path = "figures/plots/",
   width = 42.75, 
   height = 60, 
@@ -485,13 +486,13 @@ stat_test <- stat_test %>%
 p11 <- ggscatter(data = totest, x = "status", y ="simpson",color = "status") +
   geom_boxplot(fill = colrs, color = "azure4",
                outlier.color = "black", outlier.shape = 2 )+
-  annotate(geom="text", x="PreDT2", y=0.96,size =2,
+  annotate(geom="text", x="PreT2D", y=0.96,size =2,
            label=paste0("p.adj = ", round(stat_test$p.adj,digits = 4)),
            color="black") +
   theme_bw() +
-  theme(axis.title.x = element_blank(),
+theme(axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        axis.text.x = element_text(color = "black",
+        axis.text.x = element_text(
                                    angle = 25,
                                    size = 6),
         strip.text.x = element_text(size = 6),
@@ -511,8 +512,8 @@ p11 <- ggscatter(data = totest, x = "status", y ="simpson",color = "status") +
 
 ggsave(
   p11,
-  filename = "fig1c4.svg",
-  device = "svg",
+  filename = "fig1c4.png",
+  device = "png",
   path = "figures/plots/",
   width = 42.75, 
   height = 60, 
@@ -529,20 +530,18 @@ set.seed(111)
 a <- adonis2(dist ~ sample_data(ps)$Status,permutations = 1000)
 a <- a$`Pr(>F)`[1]
 p12 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
-  geom_point(size = 4.5) +
+  geom_point(size = 3.5) +
   annotate(geom="text", x=0, y=0.92,size =2,
            label=paste0("p.adj = ", round(a,digits = 4)),
            color="black") +
   stat_ellipse(aes(fill = Status)) +
   theme_bw() +
-  theme(axis.title.x = element_text(size = 8),
-        axis.title.y = element_text(size = 8),
-        axis.text.x = element_text(color = "black",
-                                   size = 6),
+  theme(axis.title.x = element_text(size = 7, color = "#353333"),
+        axis.title.y = element_text(size = 7, color = "#353333"),
         strip.text.x = element_text(size = 6),
-        axis.text = element_text(size = 7),
+        axis.text = element_blank(),
         axis.ticks.y = element_blank(),
-        axis.ticks.x = element_line(),
+        axis.ticks.x = element_blank(),
         legend.position = "none",
         legend.title = element_blank(),
         legend.text = element_text(color = "black"),
@@ -556,11 +555,11 @@ p12 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
 
 ggsave(
   p12,
-  filename = "fig1d3.svg",
-  device = "svg",
+  filename = "fig1d3.png",
+  device = "png",
   path = "figures/plots/",
-  width = 65, 
-  height = 60, 
+  width = 58, 
+  height = 57.5, 
   units = "mm")
 
 # Chao distance
@@ -573,20 +572,18 @@ ps@sam_data$dummy <- "Chao"
 a <- adonis2(dist ~ sample_data(ps)$Status,permutations = 1000)
 a <- a$`Pr(>F)`[1]
 p13 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
-  geom_point(size = 4.5) +
+  geom_point(size = 3.5) +
   annotate(geom="text", x=0, y=0.57, size =2,
            label=paste0("p.adj = ", round(a,digits = 4)),
            color="black") +
   stat_ellipse(aes(fill = Status)) +
   theme_bw() +
-  theme(axis.title.x = element_text(size = 8),
-        axis.title.y = element_text(size = 8),
-        axis.text.x = element_text(color = "black",
-                                   size = 6),
+  theme(axis.title.x = element_text(size = 7, color = "#353333"),
+        axis.title.y = element_text(size = 7, color = "#353333"),
         strip.text.x = element_text(size = 6),
-        axis.text = element_text(size = 7),
+        axis.text = element_blank(),
         axis.ticks.y = element_blank(),
-        axis.ticks.x = element_line(),
+        axis.ticks.x = element_blank(),
         legend.position = "none",
         legend.title = element_blank(),
         legend.text = element_text(color = "black"),
@@ -600,10 +597,10 @@ p13 <- plot_ordination(ps,type = "samples", ordination, color="Status") +
 
 ggsave(
   p13,
-  filename = "fig1d4.svg",
-  device = "svg",
+  filename = "fig1d4.png",
+  device = "png",
   path = "figures/plots/",
-  width = 65, 
-  height = 60, 
+  width = 58, 
+  height = 57.5, 
   units = "mm")
 ####DT2####
