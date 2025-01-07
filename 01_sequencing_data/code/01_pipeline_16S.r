@@ -12,6 +12,7 @@
 # 0.1 Clean Environment
 rm(list = ls())
 set.seed(1965)
+
 # 0.1.1 Script launched in a HPC cluster
 #setwd('/mnt/netapp2/Store_uni/home/ulc/co/dfe/git/IBEROBDIA')
 
