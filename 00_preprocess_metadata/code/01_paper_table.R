@@ -1,3 +1,63 @@
+# ==============================================================================
+# Script Title: 01_paper_table.R
+# Description: This script generates a table for the paper.
+# ==============================================================================
+# Author/s: @DiegoFE94 (GitHub)
+# Affiliation: Machine Learning for Life Sciences Laboratory (MALL)
+# Email: diego.fedreira@udc.es
+# Date Created: 2024 (Last Update on January 2025)
+# ==============================================================================
+# 0. Set Up
+# ==============================================================================
+# 0.1 Clean Environment
+rm(list = ls())
+set.seed(1965)
+
+# 0.2 Load Packages
+# Uncomment and add your packages here
+# library()
+
+# 0.3 Declare or Load Custom Functions
+# source("")
+
+# 0.4 Declare Variables
+
+# Inputs
+
+# Outputs
+
+# Arguments
+
+# ==============================================================================
+# 1. Section Title 1
+# ==============================================================================
+# Add your code for Section 1 here.
+
+# ==============================================================================
+# 2. Section Title 2
+# ==============================================================================
+# Add your code for Section 2 here.
+
+# ==============================================================================
+# 3. Section Title 3
+# ==============================================================================
+# Add your code for Section 3 here.
+
+# ==============================================================================
+# 4. Section Title 4
+# ==============================================================================
+# Add your code for Section 4 here.
+
+# ==============================================================================
+# Session Information
+# ==============================================================================
+sessionInfo()
+
+# Clean up the environment before restarting the session
+rm(list = ls())
+
+# Restart the R session (optional, only if needed)
+# .rs.restartR()
 library(readxl)
 library(dplyr)
 library(tableone)

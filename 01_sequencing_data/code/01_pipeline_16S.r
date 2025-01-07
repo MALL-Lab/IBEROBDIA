@@ -74,5 +74,3 @@ taxa <- addSpecies(taxtab = taxa, refFasta = dada2.path.refFasta.species,
 #Save OTU table and Taxa table
 saveRDS(object = taxa, file = paste0(out.path,"tax_table.rds"))
 saveRDS(object = seqtab.nochim, file = paste0(out.path,"otu_table.rds"))
-
-
