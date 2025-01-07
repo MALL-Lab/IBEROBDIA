@@ -1,3 +1,4 @@
+# Extensions
 *.xlsx
 *.pdf
 *.png
@@ -8,29 +9,24 @@
 *.docx
 *.svg
 *.csv
+
+# Thrash Files
 ._*
 .DS_Store
 .Rhistory
 .Rapp.history
-extdata/
-FastQC/
-files2rmd/
-00_preprocess_metadata/data
-01_sequencing_data/data/first_phy.rds
-01_sequencing_data/data/TL_251
-01_sequencing_data/data/TL_265
-01_sequencing_data/data/TL_285
-01_sequencing_data/data/TL_300
-01_sequencing_data/data/TL_350
-01_sequencing_data/data/TL_400
-01_sequencing_data/out
-02_preprocess/data
-02_preprocess/results
-02_preprocess/plots
-02_preprocess/.vscode
-figures/data
-figures/plots
-figures/results
-IB_RE
 .Rproj.user
 .vscode
+
+# Folders
+extdata/
+00_preprocess_metadata/data/*
+01_sequencing_data/data/*
+02_preprocess/data/*
+02_preprocess/results/*
+figures/data/*
+figures/plots/*
+figures/results/*
+graphical_abstract/*
+informs/*
+supp_data/*
