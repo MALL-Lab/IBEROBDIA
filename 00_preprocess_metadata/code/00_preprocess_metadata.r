@@ -24,7 +24,6 @@ library(data.table)
 # source("")
 
 # 0.4 Declare Variables
-
 # Inputs
 path_samples <- "extdata/FASTQ/"
 path_clinical_data <- "extdata/clinical_data.xlsx"

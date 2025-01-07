@@ -26,7 +26,6 @@ getN <- function(x) sum(getUniques(x))
 source(file = "01_sequencing_data/code/config_file.r")
 
 # 0.4 Declare Variables
-
 # Inputs
 
 # Outputs

@@ -22,7 +22,6 @@ set.seed(1965)
 # source("")
 
 # 0.4 Declare Variables
-
 # Inputs
 input_path <- "extdata/FASTQ"
 

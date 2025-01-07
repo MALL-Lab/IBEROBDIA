@@ -44,7 +44,6 @@ summarize_data <- function(df, variables) {
 }
 
 # 0.4 Declare Variables
-
 # Inputs
 input_path <- "extdata/datos_voluntarios.xlsx"
 # Outputs
