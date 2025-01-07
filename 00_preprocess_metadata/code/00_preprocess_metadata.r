@@ -82,6 +82,7 @@ clinical_v2 <- clinical_v2 %>%
 
 # 2.2 Merge the clinical data
 full_df <- dplyr::full_join(clinical, clinical_v2, by = "Sample_ID")
+
 # ==============================================================================
 # 3. Process merge data
 # ==============================================================================
@@ -122,4 +123,3 @@ rm(list = ls())
 
 # Restart the R session (optional, only if needed)
 # .rs.restartR()
-# Preprocess_metadata
