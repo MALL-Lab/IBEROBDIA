@@ -28,6 +28,7 @@ tables_input <- "01_sequencing_data/data/"
 # Outputs
 
 # Arguments
+experiment <- "TL_251"
 
 # ==============================================================================
 # 1. Load clinical data and prepare paths
@@ -36,7 +37,7 @@ tables_input <- "01_sequencing_data/data/"
 metadata <- readRDS(metadata_input)
 
 # 1.2 Prepare paths
-truncL <- sort(list.files(tables_input, pattern = "TL_251"))
+truncL <- sort(list.files(tables_input, pattern = experiment))
 nams <- paste(truncL, "phy", sep = "_")
 
 # ==============================================================================
@@ -48,8 +49,8 @@ phy_list <- list()
 # 2.2 Pseq objects construction
 for (i in seq_along(truncL)) {
   # 2.2.1 Load and merge all data in pseq object
-  tax <- readRDS(file = paste(path, truncL[i], "tax_table.rds", sep = "/"))
-  otu <- readRDS(file = paste(path, truncL[i], "otu_table.rds", sep = "/"))
+  tax <- readRDS(file = paste(tables_input, truncL[i], "tax_table.rds", sep = "/"))
+  otu <- readRDS(file = paste(tables_input, truncL[i], "otu_table.rds", sep = "/"))
   otu <- phyloseq::t(otu)
   ps <- phyloseq(otu_table(otu, taxa_are_rows = TRUE),
                  sample_data(metadata),
@@ -85,7 +86,7 @@ for (i in seq_along(truncL)) {
 names(phy_list) <- nams
 for (i in seq_along(phy_list)) {
   saveRDS(object = phy_list[[i]],
-          file = paste(path, truncL[i], paste0(names(phy_list[i]), ".rds"),
+          file = paste(tables_input, truncL[i], paste0(names(phy_list[i]), ".rds"),
                        sep = "/"))
 }
 

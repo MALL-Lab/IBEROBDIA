@@ -30,7 +30,7 @@ source(file = "01_sequencing_data/code/config_file.r")
 # Inputs
 
 # Outputs
-filter.path = paste(input.dir.path, "Filtered_FASTQ", sep= "/")
+filter.path <- paste(input.dir.path, "Filtered_FASTQ", sep = "/")
 
 # Arguments
 
