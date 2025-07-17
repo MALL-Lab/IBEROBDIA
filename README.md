@@ -1,4 +1,4 @@
-# Study of the faecal microbiome of patients with metabolic syndrome and type 2 diabetes
+# Fecal microbiome analysis in patients with metabolic syndrome and type 2 diabetes
 
 
 [![DOI](https://zenodo.org/badge/473937600.svg)](https://doi.org/10.5281/zenodo.14051703)
@@ -25,7 +25,7 @@ Contributing authors: laura.sinisterra@usc.es; diego.fedreira@udc.es; j.linares@
 
 Article is open access here.
 
-DOI: link DOI
+DOI: [10.7717/peerj.19108](https://doi.org/10.7717/peerj.19108)
 
 ## Recruitment and Participants
 The participants of this research belong to the project IBEROBDIA: “Obesity and Diabetes in Iberoamerica: Risk factors and new pathogenic and predictive biomarkers”, funded by the Iberoamerican Program of Science and Technology (CyTED) (918PTE0540) and by the Spanish State Research Agency (PCI2018-093284). This project has the approval of the ethics committee of the Galician Health System (SERGAS, Xunta de Galicia), code 2018/270. All the participants included in the study were adequately informed about the process and signed an informed consent. Data from volunteers were processed in accordance with the organic law 3/2018, of 5 December, on the protection of personal data and the guarantee of digital rights.
