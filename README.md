@@ -2,10 +2,12 @@
 
 
 [![DOI](https://zenodo.org/badge/473937600.svg)](https://doi.org/10.5281/zenodo.14051703)
-![GitHub release](https://img.shields.io/github/v/release/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA?label=release)
+[![Paper](https://img.shields.io/badge/paper-10.7717%2Fpeerj.19108-blue)](https://doi.org/10.7717/peerj.19108)
+[![GitHub release](https://img.shields.io/github/v/release/MALL-Lab/IBEROBDIA?label=release)](https://github.com/MALL-Lab/IBEROBDIA/releases)
+![GitHub contributors](https://img.shields.io/github/contributors/MALL-Lab/IBEROBDIA)
+![GitHub last commit](https://img.shields.io/github/last-commit/MALL-Lab/IBEROBDIA)
 ![Maintenance](https://img.shields.io/badge/Maintenance-Actively%20Maintained-brightgreen)
-![GitHub contributors](https://img.shields.io/github/contributors/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA)
-![GitHub last commit](https://img.shields.io/github/last-commit/MALL-Machine-Learning-in-Live-Sciences/IBEROBDIA)
+[![MALL Lab](https://img.shields.io/badge/MALL-Lab-233452)](https://mall-lab.github.io/)
 
 ## Authors
 
